@@ -2,7 +2,7 @@ const router = require('express').Router()
 const userController = require('../controllers/user.controller')
 
 /* include authorization */
-const authorization = require('../global_function/verifyToken')
+const authorization = require('../global_function/token')
 
 /* include libary validate data */
 const { validateBody } = require('../validation/validation')
@@ -19,5 +19,11 @@ router.post('/signup',
 router.get('/account',
   authorization.auth,
   userController.getMyUser)
+
+router.post('/logout',
+  userController.logout)
+
+router.post('/refresh_token',
+  userController.getRefreshToken)
 
 module.exports = router
