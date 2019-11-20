@@ -13,3 +13,11 @@ module.exports.auth = (req, res, next) => {
     res.sendStatus(403)
   }
 }
+
+module.exports.createAccessToken = (payload) => {
+  return jwt.sign({ ...payload }, process.env.TOKEN_SECRET, { expiresIn: '15m' })
+}
+
+module.exports.createRefreshToken = (payload) => {
+  return jwt.sign({ ...payload }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' })
+}
