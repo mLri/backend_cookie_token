@@ -10,12 +10,13 @@ module.exports.auth = (req, res, next) => {
     req.user = verified
     next()
   } catch (err) {
-    res.sendStatus(403)
+    console.log(err)
+    res.status(403).json(err)
   }
 }
 
 module.exports.createAccessToken = (payload) => {
-  return jwt.sign({ ...payload }, process.env.TOKEN_SECRET, { expiresIn: '15m' })
+  return jwt.sign({ ...payload }, process.env.TOKEN_SECRET, { expiresIn: '1m' })
 }
 
 module.exports.createRefreshToken = (payload) => {
