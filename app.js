@@ -10,7 +10,7 @@ const app = express()
 /* midleware */
 app.use(cookieParser())
 app.use(cors({
-  origin: 'http://localhost:4000',
+  origin: 'http://localhost:8080',
   credentials: true
 }))
 app.use(express.json())
