@@ -64,7 +64,8 @@ module.exports.signin = async (req, res) => {
   /* send access token back */
   res.send({
     accessToken,
-    email
+    email,
+    userId: user._id
   })
 }
 
@@ -121,7 +122,11 @@ module.exports.getRefreshToken = async (req, res) => {
     // path: '/api/user/refresh_token'
   })
 
-  return res.send({ accessToken })
+  return res.send({ 
+    accessToken,
+    email: user.email,
+    userId: user._id 
+  })
 }
 
 module.exports.getMyUser = async (req, res) => {
