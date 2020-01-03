@@ -30,5 +30,6 @@ mongoose
 
 /* midleware route */
 app.use('/api/user', require('./routes/user.route'))
+app.use('/api/todo', require('./routes/todo.route'))
 
 app.listen(3000, () => console.log(`server up and running on port ${process.env.PORT}`))
